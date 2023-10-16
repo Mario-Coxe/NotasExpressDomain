@@ -32,33 +32,38 @@ class TenantResource extends Resource
 
             TextInput::make('name')
                 ->string()
-                ->placeholder('Nome'),
+                ->placeholder('Nome')
+                ->required(),
 
             // Campo de Email
             TextInput::make('email')
                 ->email()
-                ->placeholder('Email'),
+                ->placeholder('Email')
+                ->required(),
 
 
                 Select::make('status')
                     ->options([
                         'true' => 'Activo',
-                        'false' => 'Desativo',
+                        'false' => 'Desativo'
                         
-                    ]),
+                    ])
+                    ->required(),
            
 
             // Campo de Senha
             TextInput::make('password')
                 ->string()
-                ->placeholder('Senha'),
+                ->placeholder('Senha')
+                ->required(),
 
 
             // Campo de Telefone
             TextInput::make('phone')
                 ->mask('')
                 ->tel()
-                ->placeholder('999-999-999'),
+                ->placeholder('999-999-999')
+                ->required()
         ]);
     }
 

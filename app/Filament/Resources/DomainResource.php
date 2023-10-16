@@ -30,10 +30,15 @@ class DomainResource extends Resource
                 //
                 TextInput::make('domain')
                     ->string()
-                    ->placeholder('Nome do dominio'),
+                    ->placeholder('Nome do dominio')
+                    ->required()
+                    ->unique(column: 'domain')
+                    ->maxLength(255),
 
                 Select::make('tenant_id')
-                ->options(Tenant::all()->pluck('name', 'id'))
+                    ->options(Tenant::all()->pluck('name', 'id'))
+                    ->required()
+                    ->relationship('tenant', 'id')
             ]);
     }
 
