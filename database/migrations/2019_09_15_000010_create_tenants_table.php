@@ -17,17 +17,11 @@ class CreateTenantsTable extends Migration
     {
         Schema::create('tenants', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->string('name')->unique();
-            $table->string('email')->unique();
-            $table->boolean('status')->default(false);
-            $table->string('password');
-            $table->string('phone');
-
-
-            $table->timestamps();
             $table->json('data')->nullable();
+            $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.

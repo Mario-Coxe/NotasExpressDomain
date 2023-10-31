@@ -34,36 +34,6 @@ class TenantResource extends Resource
                 ->string()
                 ->placeholder('Nome')
                 ->required(),
-
-            // Campo de Email
-            TextInput::make('email')
-                ->email()
-                ->placeholder('Email')
-                ->required(),
-
-
-                Select::make('status')
-                    ->options([
-                        'true' => 'Activo',
-                        'false' => 'Desativo'
-                        
-                    ])
-                    ->required(),
-           
-
-            // Campo de Senha
-            TextInput::make('password')
-                ->string()
-                ->placeholder('Senha')
-                ->required(),
-
-
-            // Campo de Telefone
-            TextInput::make('phone')
-                ->mask('')
-                ->tel()
-                ->placeholder('999-999-999')
-                ->required()
         ]);
     }
 
@@ -74,12 +44,6 @@ class TenantResource extends Resource
                 //
                 TextColumn::make(name: 'id'),
                 TextColumn::make(name: 'name'),
-                TextColumn::make(name: 'email'),
-                TextColumn::make(name: 'phone'),
-                TextColumn::make(name: 'password'),
-                TextColumn::make(name: 'created_at')->dateTime(),
-                TextColumn::make(name: 'updated_at')->dateTime(),
-
             ])
             ->filters([
                 //
@@ -121,10 +85,6 @@ class TenantResource extends Resource
     {
         return [
             'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'phone' => 'required',
-            // Outras regras de validação, se necessário
         ];
     }
 }
