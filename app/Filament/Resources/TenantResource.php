@@ -7,7 +7,7 @@ use App\Filament\Resources\TenantResource\RelationManagers;
 use App\Models\Tenant;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Forms\Form;
-Use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\Action;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
@@ -34,6 +35,26 @@ class TenantResource extends Resource
                 ->string()
                 ->placeholder('Nome')
                 ->required(),
+
+            TextInput::make('phone')
+                ->string()
+                ->placeholder('Telefone')
+                ->required(),
+
+            TextInput::make('email')
+                ->string()
+                ->placeholder('Email')
+                ->required(),
+
+            TextInput::make('password')
+                ->string()
+                ->placeholder('Senha')
+                ->required(),
+
+            Toggle::make('status')
+                ->onColor('success')
+                ->offColor('danger')
+                
         ]);
     }
 
@@ -44,12 +65,17 @@ class TenantResource extends Resource
                 //
                 TextColumn::make(name: 'id'),
                 TextColumn::make(name: 'name'),
+                TextColumn::make(name: 'phone'),
+                TextColumn::make(name: 'email'),
+                //TextColumn::make(name: 'password'),
+                TextColumn::make(name: 'status'),
+                TextColumn::make(name: 'updated_at'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-      
+
                 ActionGroup::make([
                     ViewAction::make(),
                     EditAction::make(),

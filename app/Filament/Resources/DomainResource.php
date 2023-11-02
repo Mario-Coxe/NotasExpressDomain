@@ -36,7 +36,7 @@ class DomainResource extends Resource
                     ->maxLength(255),
 
                 Select::make('tenant_id')
-                    ->options(Tenant::all()->pluck('name', 'id'))
+                    ->options(Tenant::all()->pluck('id', 'name'))
                     ->required()
                     ->relationship('tenant', 'id')
             ]);
